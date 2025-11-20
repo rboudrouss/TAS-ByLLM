@@ -1,5 +1,7 @@
 
-# 3. Exemples
+# 2. Prise En Main
+
+Par quelques cas d'utilisation simples, on explore les fonctionnalités de jac et byllm().
 
 ## `translator.jac` (par Function Definitions)
 
@@ -18,32 +20,14 @@ with entry {
 }
 ```
 
-En suivant l'algorithme MT-IR et la synthèse de prompt de MTP, le prompt généré par la sémantique du code (lors de l'appel de la fonction seulement) serait :
+En suivant l'algorithme MT-IR et la synthèse de prompt de MTP, le prompt généré par la sémantique du code (lors de l'appel de la fonction seulement) serait comme dans la Figure \ref{fig:translate}.
 
-
-```js
-[System Prompt]
-This is an operation you must perform and return the output values.
-
-[Inputs_Information]
-
-(language) (str) = "French"
-(phrase) (str) = "Hello, how are you?"
-
-[Output_Information]
-(str)
-
-[Type_Explanations]
-(str)
-
-[Action]
-translate_to
-Generate and return the output result(s) only, adhering to the provided Type in the
-following format
-[Output]
-<result>
-
-```
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{image-5.png}
+\caption{Prompt généré pour l'appel de `translate\_to`}
+\label{fig:translate}
+\end{figure}
 
 stdin:
 ```
@@ -129,33 +113,11 @@ student info: Student(name='John Doe',
                     location='New York', ranking=10))
 ```
 
-En suivant l'algorithme MT-IR et la synthèse de prompt de MTP, le prompt généré par la sémantique de l'appel de `generate_student` ressemblerait à :
+En suivant l'algorithme MT-IR et la synthèse de prompt de MTP, le prompt généré par la sémantique de l'appel de `generate_student` ressemblerait à la Figure \ref{fig:generate_student}.
 
-```js
-[System Prompt]
-This is an operation you must perform and return the output values.
-
-[Inputs_Information]
-
-(gender) (Gender) = MALE
-
-[Output_Information]
-(Student)
-
-[Type_Explanations]
-(Student)(obj)eg:
-- Student(name:str,gender:Gender..,classes:list[Class],university:University)
-(Gender) (enum)eg:
-- Gender(MALE,FEMALE,OTHER)
-(Class)(obj)eg:
-- Class(class_name:str,professor:str,credits:int)
-(University)(obj)eg:
-- University(name:str,location:str,ranking:int)
-
-[Action]
-generate_student
-Generate and return the output result(s) only, adhering to the provided Type in the
-following format
-[Output]
-<result>
-```
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{image-7.png}
+\caption{Prompt généré pour l'appel de `generate\_student`}
+\label{fig:generate_student}
+\end{figure}

@@ -1,0 +1,11 @@
+{
+  "pipeline": "jac",
+  "total_runs": 10,
+  "valid_runs": 8,
+  "error_runs": 2,
+  "error_ratio": 0.2,
+  "mean_ade": 5.541563146189358,
+  "mean_fde": 8.951275508963498,
+  "mean_l2": 5.541563146189358,
+  "mean_inference_time": 114.27358651161194
+}

@@ -1,0 +1,28 @@
+prompts:
+  scene_prompt: null
+  action_prompt: null
+  waypoint_prompt: >-
+    You are an autonomous driving labeller.
+    You have access to the front-view camera image.
+    You must observe and analyze the movements of vehicles and pedestrians,
+    lane markings, traffic lights, and any relevant objects in the scene. Do not infer the ego's action.
+    generate your response in plain text in one paragraph without any formating.
+    Now you memorised the scene decribtion, you must determine the driving intent of the vehicule.
+    The ego vehicle's speed for the past 3 seconds with 0.5 sec resolution is
+    {prev_speed} m/s (last index is the most recent)
+    The ego vehicle's curvature for the past 3 seconds with 0.5 sec resolution is
+    {prev_curvatures} (last index is the most recent)
+    A positive curvature indicates the ego is turning left.
+    A negative curvature indicates the ego is turning right.
+    What was the ego's previous intent?
+    Was it accelerating (by how much), decelerating (by how much), or maintaining speed?
+    Was it turning left (by how much), turning right (by how much), or following the lane?
+    Taking into account the ego's previous intent, how should it drive in the next 3 seconds?
+    Should the ego accelerate (by how much), decelerate (by how much), or maintain speed?
+    Should the ego turn left (by how much), turn right (by how much), or follow the lane?
+    Now you memorised the high-level driving instructions are as follows :
+    Predict the speed and curvature for the next 6 waypoints, with 0.5-second resolution.
+    The predicted speed and curvature changes must obey the physical constraints of the vehicle.
+    Predict Exactly 6 pairs of speed and curvature, in the format:
+    [(v1, c1), (v2, c2), (v3, c3), (v4, c4), (v5, c5), (v6, c6)].
+    ONLY return the answers in the required format, do not include punctuation or text.

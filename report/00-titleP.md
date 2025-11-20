@@ -10,6 +10,10 @@ header-includes:
   - \usepackage{xcolor}
   - \usepackage{graphicx}
   - \usepackage{caption}
+  - \usepackage{titling}
+  - \usepackage{subcaption}
+
+
 ---
 
 \begin{titlepage}
@@ -43,11 +47,13 @@ header-includes:
    \end{center}
 \end{titlepage}
 
-\newcommand{\partie}[1]{%
+
+\newcommand{\partie}[2][]{%
   \newpage
   \begin{center}
     \vspace*{3cm}
-    {\Huge \textbf{#1}}
+    {\Huge \textbf{#2}}\\[1cm]
+    {\large\itshape #1}
     \vspace{2cm}
   \end{center}
   \newpage

@@ -1,0 +1,22 @@
+[System Prompt]
+This is an operation you must perform and return the output values.
+
+[Inputs_Information]
+(inputData) (InputData) =
+
+[Output_Information]
+(Tuple[drivingAction, ...])
+
+[Type_Explanations]
+(InputData)(obj)eg:
+- InputData( vehiculeEgoInfo=VehiculeEgoInfo, outputSecondInterval = float, outputCount = int)
+(VehiculeEgoInfo)(obj)eg:
+- VehiculeEgoInfo( frontCameraImage=Image, pastDrivingActions=Tuple[drivingAction, ...])
+(drivingAction)(obj)eg:
+- drivingAction( speed=float, curvature=float)
+[Action]
+predictFutureVehiculeDrivingAction
+Generate and return the output result(s) only, adhering to the provided Type
+in the following format
+[Output]
+<result>

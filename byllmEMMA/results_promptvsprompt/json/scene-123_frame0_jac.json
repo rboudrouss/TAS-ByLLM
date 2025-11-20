@@ -1,0 +1,44 @@
+{
+  "scene": "scene-123",
+  "frame": 0,
+  "image": "input/camfront_scene_123_frame0.jpg",
+  "scene_description": "The image shows a front-view camera image of a scene with a vehicle in the foreground and another vehicle in the background. The road appears to be a two-lane road with clear lane markings. There are no pedestrians or traffic lights visible in the image.",
+  "trajectory": [
+    [
+      3.7,
+      0.0005777712925351
+    ],
+    [
+      3.9,
+      0.0005777712925351
+    ],
+    [
+      4.1,
+      0.0005777712925351
+    ],
+    [
+      4.3,
+      0.0005777712925351
+    ],
+    [
+      4.5,
+      0.0005777712925351
+    ],
+    [
+      4.7,
+      0.0005777712925351
+    ]
+  ],
+  "ade": 1.4708350098460352,
+  "fde": 2.4420575355382375,
+  "l2": [
+    0.22022715545545216,
+    0.4605309344111175,
+    1.3804909213981,
+    1.8905269930969215,
+    2.4311765191763817,
+    2.4420575355382375
+  ],
+  "inference_time": 106.36840510368347,
+  "error": null
+}

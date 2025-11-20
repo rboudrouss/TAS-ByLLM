@@ -1,0 +1,11 @@
+{
+  "pipeline": "python",
+  "total_runs": 5,
+  "valid_runs": 5,
+  "error_runs": 0,
+  "error_ratio": 0.0,
+  "mean_ade": 2.842627924189183,
+  "mean_fde": 5.9158748623382404,
+  "mean_l2": 2.842627924189183,
+  "mean_inference_time": 15.170314455032349
+}

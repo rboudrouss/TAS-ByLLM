@@ -1,0 +1,38 @@
+{
+  "python": {
+    "pipeline": "python",
+    "total_runs": 5,
+    "valid_runs": 5,
+    "error_runs": 0,
+    "error_ratio": 0.0,
+    "mean_ade": 2.842627924189183,
+    "mean_fde": 5.9158748623382404,
+    "mean_l2": 2.842627924189183,
+    "mean_inference_time": 15.170314455032349
+  },
+  "jac": {
+    "pipeline": "jac",
+    "total_runs": 2,
+    "valid_runs": 2,
+    "error_runs": 0,
+    "error_ratio": 0.0,
+    "mean_ade": 5.8158069156365855,
+    "mean_fde": 9.132848977946253,
+    "mean_l2": 5.8158069156365855,
+    "mean_inference_time": 117.78813147544861
+  },
+  "comparison": {
+    "ade_diff": -2.9731789914474023,
+    "fde_diff": -3.2169741156080125,
+    "l2_diff": -2.9731789914474023,
+    "inference_time_diff": -102.61781702041625,
+    "error_ratio_diff": 0.0
+  },
+  "winner": {
+    "ADE": "python",
+    "FDE": "python",
+    "L2": "python",
+    "Inference Time": "python",
+    "Error Rate": "jac"
+  }
+}
