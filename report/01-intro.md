@@ -1,0 +1,21 @@
+\partie{Partie I \\ Synthèse de l'article \\ "MTP: A Meaning-Typed Language Abstraction \\ for AI-Integrated Programming"}
+
+\newpage
+
+# 1. Introduction
+
+## 1.1. Contexte
+
+Avec l'avènement de l'intelligence artificielle générative et des Large Language Models (LLMs), la manière dont nous développons les logiciels évolue rapidement. Si de nombreux travaux se sont concentrés sur l'utilisation des LLMs pour la génération de code, une tendance émergente consiste à intégrer les LLMs comme composants fonctionnels essentiels qui s'exécutent au runtime. Ces applications AI-Integrated exploitent l'IA générative pendant l'exécution pour réaliser des fonctionnalités de plus en plus critiques du programme, fusionnant ainsi la programmation conventionnelle avec des capacités pilotées par l'IA.
+
+La construction d'applications AI-Integrated reste cependant un défi complexe en raison des différences fondamentales entre les paradigmes de programmation. Dans la programmation conventionnelle, le code décrit des opérations précises effectuées sur des variables explicitement définies. En revanche, les LLMs traitent du texte en langage naturel en entrée et produisent des sorties textuelles. Pour intégrer des LLMs dans les programmes, les développeurs doivent donc manuellement construire des entrées textuelles, un processus connu sous le nom de prompt engineering.
+
+Plusieurs frameworks tels que LangChain, LMQL, DSPy et SGLang ont été développés pour faciliter le prompt engineering. Bien qu'ils fournissent des outils plus sophistiqués, ils introduisent en pratique des couches supplémentaires de complexité. Les développeurs restent responsables de la construction manuelle des prompts, doivent se familiariser avec de nouveaux langages ou syntaxes spécialisées, et font face aux défis de conversion des sorties LLM en objets compatibles avec leur code.
+
+# 1.2. Problématique et motivation
+
+L'approche du prompt engineering impose aux développeurs plusieurs problèmatiques : la construction manuelle de prompts détaillés incluant descriptions du problème, spécifications d'entrée et règles de génération, la définition explicite et laborieuse des formats de sortie, particulièrement pour les objets profondément imbriqués, la conversion des sorties textuelles du LLM en objets typés compatibles avec le reste de l'application, nécessitant souvent de multiples fonctions auxiliaires et la gestion des erreurs et des mécanismes de retry pour pallier la nature non-déterministe des LLMs.
+
+Dans cet article, les auteurs introduisent le Meaning-Typed Programming (`MTP`), une approche visant à simplifier la création d'applications AI-Integrated. Le paradigme MTP repose sur trois composants principaux : l'opérateur `by` qui permet l'intégration de fonctionnalités LLM dans le code, `MT-IR` (Meaning-Typed Intermediate Representation) qui capture la sémantique du code, et `MT-Runtime` qui automatise les interactions avec les LLMs. L'idée centrale de ce travail est que le code source contient déjà de l'information sémantique, car il est écrit pour être compris par des développeurs. Avec les capacités actuelles des LLMs, il devient possible d'inférer les intentions du code sans nécessiter de descriptions explicites ou de construction de prompts par les développeurs. Les noms de fonctions, les paramètres et les types portent du sens qui peut être exploité automatiquement pour générer les prompts, traduisant ainsi l'intention du code en instructions pour le LLM.
+
+À titre d'illustration, considérons une fonction qui génère le prochain niveau d'un jeu vidéo. Avec les frameworks actuels, cette tâche nécessite la construction manuelle d'un prompt détaillé, la spécification explicite du format de sortie, et l'implémentation de mécanismes de conversion et de validation. En revanche, l'approche MTP permet d'exprimer cette même fonctionnalité en une seule ligne : `def get_next_level(prev_levels: list[Level]) -> Level by llm`. Cette déclaration offre plusieurs avantages : une abstraction du prompt engineering, l'élimination de la conversion manuelle des données, et un code plus maintenable. Cela soulève la question : comment MTP peut-il automatiser ce processus ?
