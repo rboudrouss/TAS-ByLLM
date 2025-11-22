@@ -1,6 +1,6 @@
 
 \newpage
-# Contributions Personnelles``
+# Contributions Personnelles
 
 
 * **Une esquisse de formalisation et de vérification de types pour ByLLM** : proposition d'une formalisation abstraite du paradigme MTP, indépendante du langage Jac, incluant des garanties de sûreté de type statique.
