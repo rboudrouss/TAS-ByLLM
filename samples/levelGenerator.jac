@@ -10,7 +10,7 @@ obj Wall {
     has end_pos: Position;
 }
 
-obj Map {
+obj Map{
     has walls: list[Wall];
     has enemies: list[Position];
     has player_pos: Position;
