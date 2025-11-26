@@ -47,7 +47,6 @@ header-includes:
    \end{center}
 \end{titlepage}
 
-
 \newcommand{\partie}[2][]{%
   \newpage
   \begin{center}
