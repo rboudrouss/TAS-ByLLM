@@ -1,8 +1,8 @@
-# 3. Prototype: JacEMMA - Prédiction de trajectoire de véhicule
+# 3. Prototype: byllmEMMA - Prédiction de trajectoire de véhicule
 
 L'objectif de notre prototype est de prédire la trajectoire future d'un véhicule en utilisant sa vitesse et sa courbure passées ainsi qu'une image capturée par une caméra frontale.
 
-L'idée est venue de la méthode [LightEMMA](https://github.com/michigan-traffic-lab/LightEMMA) (End to End Multi-Modal Attention for Vehicle Trajectory Prediction) qui utilise des modèles multimodaux pour prédire des trajectoires d'un véhicule à partir de sa caméra frontale et d'informations temporelles sur l'ego du véhicule. C'est une tâche complexe qui nécessite un prompt engineering poussé pour obtenir un résultat correct. Ce projet permettra de pousser les capacités sémantiques de byllm() pour une tâche relativement complexe.
+L'idée est venue de la méthode [LightEMMA](https://github.com/michigan-traffic-lab/LightEMMA) (End to End Multi-Modal Attention for Vehicle Trajectory Prediction) qui utilise des modèles multimodaux pour prédire des trajectoires d'un véhicule à partir de sa caméra frontale et d'informations temporelles sur l'ego du véhicule. C'est une tâche complexe qui nécessite un prompt engineering poussé pour obtenir un résultat correct. Ce projet permettra de pousser les capacités sémantiques de byllm pour une tâche relativement complexe.
 
 ## 3.1. Méthode
 
@@ -10,9 +10,9 @@ Deux objectifs principaux dans notre projet :
 
 * répliquer le comportement de [LightEMMA](https://github.com/michigan-traffic-lab/LightEMMA) sur une frame d'une situation de conduite
 
-* comparer les resultats d'une implémentation en Jac avec byllm() par rapport à une implémentation classique en Python.
+* comparer les resultats d'une implémentation en Jac avec byllm par rapport à une implémentation classique en Python.
 
-Là où le modèle utilise la librairie Transformers pour charger et inférer un modèle multimodal, nous allons utiliser byllm() interrogeant un modèle local via Ollama. L'implémentation classique utilisera la librairie Ollama pour faire des appels au modèle local.
+Là où le modèle utilise la librairie Transformers pour charger et inférer un modèle multimodal, nous allons utiliser byllm interrogeant un modèle local via Ollama. L'implémentation classique utilisera la librairie Ollama pour faire des appels au modèle local.
 
 LightEMMA requète deux fois le VLM pour intégrer une description de la scène et des intentions de conduite dans le prompt final. Nous utiliserons un seul prompt unique pour la méthode traditionnelle.
 
@@ -40,7 +40,7 @@ $$
     - $P_{ss}$ : version de $P$ avec Semstrings (contexte sémantique ajouté)
     - $P_{pm}$ : version de $P$ avec prompt manuel (prompt passé comme attribut)
     - $P_{def}$ : version de $P$ sans contexte supplémentaire (défaut, philosophie du papier original)
-    - $P_{py}$ : implémentation Python classique sans byllm()
+    - $P_{py}$ : implémentation Python classique sans byllm
 
 Bien que $P_{pm}$ et $P_{py}$ utilisent le même prompt, il est interessant de comparer leur robustesse lors de l'evaluation de l'output.
 
@@ -133,9 +133,9 @@ Nous utilisons une frame du dataset [nuScenes](https://www.nuscenes.org/) avec l
 \end{minipage}
 \end{figure}
 
-Fig \ref{fig:img1}, \ref{fig:img2} et \ref{fig:img3} représentent respectivement l'implémentation de $P_{def}$, $P_{ss}$ et $P_{pm}$ en Jac avec byllm(), tandis que \ref{fig:img4} montre l'implémentation de $P_{py}$ en Python classique. La simplicité de l'implémentation en Jac est évidente comparée à la version Python, qui nécessite en plus de mettre en place un parser.
+Fig \ref{fig:img1}, \ref{fig:img2} et \ref{fig:img3} représentent respectivement l'implémentation de $P_{def}$, $P_{ss}$ et $P_{pm}$ en Jac avec byllm, tandis que \ref{fig:img4} montre l'implémentation de $P_{py}$ en Python classique. La simplicité de l'implémentation en Jac est évidente comparée à la version Python, qui nécessite en plus de mettre en place un parser.
 
-De \ref{fig:img1} à \ref{fig:img3}, on remarque des différences dans le naming des variables et le typage ; nous avons essayé de rendre le code sémantiquement plus explicite pour maximiser la compréhension de byllm().
+De \ref{fig:img1} à \ref{fig:img3}, on remarque des différences dans le naming des variables et le typage ; nous avons essayé de rendre le code sémantiquement plus explicite pour maximiser la compréhension de byllm.
 
 ## 3.4. Illustration de la formation du prompt par MT-IR et MT-runtime
 
@@ -201,15 +201,15 @@ Tableau récapitulatif (moyennes sur 50 essais sur un Apple M5 (10) @ 4.61 GHz a
 
 Par exemple, on peux visualiser d'une trajectoire (\ref{fig:results}) avec un mean ADE de 2.39 m.
 
-**Temps d'inférence moyen en ms** : 10 fois plus court pour $P_{py}$ que pour les versions avec byllm(). Peut s'expliquer par un biais matériel (byLLM ne supporte peut-etre pas l'architecture CUDA).
+**Temps d'inférence moyen en ms** : 10 fois plus court pour $P_{py}$ que pour les versions avec byllm. Peut s'expliquer par un biais matériel (byLLM ne supporte peut-etre pas l'architecture CUDA).
 
-***Displacement Errors (ADE, FDE, L2)** : $P_{py}$ et $P_{pm}$ ont des performances similaires, bien meilleures que $P_{def}$ et $P_{ss}$. Même si la philosophie de byllm() n'est pas exactement respectée, il semble que dans ce cas précis, un prompt manuel bien conçu peut considérablement améliorer les performances sans avoir à gérer le parsing de la sortie. $P_{def}$ obtient les moins bonnes performances, mais le fait que ses résultats soient très proches de ceux de $P_{ss}$ qui contient beacoup d'information additionnelle amène à s’interroger sur le rôle réel des Semstrings dans la synthèse du prompt.
+***Displacement Errors (ADE, FDE, L2)** : $P_{py}$ et $P_{pm}$ ont des performances similaires, bien meilleures que $P_{def}$ et $P_{ss}$. Même si la philosophie de byllm n'est pas exactement respectée, il semble que dans ce cas précis, un prompt manuel bien conçu peut considérablement améliorer les performances sans avoir à gérer le parsing de la sortie. $P_{def}$ obtient les moins bonnes performances, mais le fait que ses résultats soient très proches de ceux de $P_{ss}$ qui contient beacoup d'information additionnelle amène à s’interroger sur le rôle réel des Semstrings dans la synthèse du prompt.
 
-**Taille du code (LoC)** : de loin la plus petite pour les versions byllm(), montrant la simplicité d'implémentation du paradigme.
+**Taille du code (LoC)** : de loin la plus petite pour les versions byllm, montrant la simplicité d'implémentation du paradigme.
 
-Avec byllm(), la frontière entre prompt engineering et "semantic coding engineering" devient parfois floue. On tente de créer des variables et structures de données très spécifiques pour guider la génération du prompt et d'ajouter des indications sémantiques, mais cela ne garantit pas des performances optimales. En effet, pour des tâches complexes comme la prédiction de trajectoire via VLM, la sémantique du code ne semble pas suffisante pour générer un prompt efficace pour un modèle de taille modeste comme qwen2.5VL_8b.
+Avec byllm, la frontière entre prompt engineering et "semantic coding engineering" devient parfois floue. On tente de créer des variables et structures de données très spécifiques pour guider la génération du prompt et d'ajouter des indications sémantiques, mais cela ne garantit pas des performances optimales. En effet, pour des tâches complexes comme la prédiction de trajectoire via VLM, la sémantique du code ne semble pas suffisante pour générer un prompt efficace pour un modèle de taille modeste comme qwen2.5VL_8b.
 
-Ou bien mon implémentation en Jac présente certaines coding practices peu adaptées, ce qui a pu empêcher d’exploiter pleinement le potentiel de byllm(). Des essais supplémentaires en variant les conventions de nommage seraient nécessaires pour confirmer ou invalider cette hypothèse.
+Ou bien mon implémentation en Jac présente certaines coding practices peu adaptées, ce qui a pu empêcher d’exploiter pleinement le potentiel de byllm. Des essais supplémentaires en variant les conventions de nommage seraient nécessaires pour confirmer ou invalider cette hypothèse.
 
 
 \begin{figure}[tb]

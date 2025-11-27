@@ -1,7 +1,7 @@
 
 # 2. Prise En Main
 
-Par quelques cas d'utilisation simples, on explore les fonctionnalités de jac et byllm().
+Par quelques cas d'utilisation simples, on explore les fonctionnalités de jac et byllm.
 
 ## `translator.jac` (par Function Definitions)
 
