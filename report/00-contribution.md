@@ -14,14 +14,15 @@ Cette partie présente une formalisation abstraite du paradigme MTP indépendant
 \vspace{0.2cm}
 
 - **Partie III – Contribution personnelle : byllmEMMA**  
-Cette partie décrit des example d'utilisation de byllm et une implémentation personnelle d’un système de prédiction de trajectoire pour véhicules autonomes utilisant ByLLM et Jac. Inspirée par [LightEMMA](https://github.com/michigan-traffic-lab/LightEMMA) et une version personnelle de LightEMMA produite durant un stage à l'université d'Aalto (supervisée par Azam Shoabib — article non encore disponible).
-   - Le principe de LightEMMA est repris avec un seul prompt. Mon travail en stage a démontré qu'un seul prompt offrait des performances comparables à plusieurs prompts pour certains modèles, notamment les modèles Cosmos de NVIDIA ; pour les modèles Qwen, elles sont légèrement inférieures, mais correctes.
+Cette partie décrit des example d'utilisation de byllm et une implémentation personnelle d’un système de prédiction de trajectoire pour véhicules autonomes utilisant ByLLM et Jac. Inspirée par [LightEMMA](https://github.com/michigan-traffic-lab/LightEMMA) et une version personnelle de LightEMMA produite durant un stage à l'université d'Aalto (supervisée par Azam Shoabib, article non encore disponible).
+   - Le principe de LightEMMA est repris avec un seul prompt. Mon travail en stage a démontré qu'un seul prompt offrait des performances comparables à plusieurs prompts pour certains modèles, notamment les modèles Cosmos de NVIDIA, pour les modèles Qwen, elles sont légèrement inférieures, mais correctes.
    - Le seul code repris de LightEMMA concerne certaines fonctions de `utils.py`, comme la conversion des driving intents en waypoints.
 
 Toutes nos contributions peuvent être trouvées dans le dépôt GitHub suivant : \url{https://github.com/rboudrouss/TAS-ByLLM}. Vous y trouverez notamment :
+
 - Notre implémentation de byllmEMMA dans le dossier `byllmEMMA/`
 - Nos différents exemples de code Jac dans le dossier `samples/`
 - Une tentative d'implémentation de la partie II dans le dossier `type-checker/`
 - Notre rapport dans le dossier `report/`
 
-Vous trouverez aussi ici le lien vers un fork de JacLang contenant l'ajout d'une commande `jac tools ir semantic` qui permet de visualiser le registre sémantique généré par le MT-IR : \url{https://github.com/rboudrouss/jaseci}
+Vous trouverez aussi un fork de JacLang contenant l'ajout d'une commande `jac tools ir semantic` qui permet de visualiser le registre sémantique généré par le MT-IR : \url{https://github.com/rboudrouss/jaseci}
